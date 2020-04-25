@@ -5,12 +5,11 @@
  * Documentation: http://www.jaxio.com/documentation/celerio/
  * Modificado por CARLOS BAZALAR
  * Email: cbazalarlarosa@gmail.com
- * Template pack-angular:src/main/java/repository/EntitydeltaRepository.java.e.vm
+ * Template pack-angular:src/main/java/rest/support/AutoCompleteQuery.java.p.vm
  */
-package com.incloud.hcp.repository.delta;
+package com.incloud.hcp.rest.support;
 
-import com.incloud.hcp.repository.AppParametriaRepository;
-
-public interface AppParametriaDeltaRepository extends AppParametriaRepository {
-
+public class AutoCompleteQuery {
+    public String query;
+    public int maxResults;
 }

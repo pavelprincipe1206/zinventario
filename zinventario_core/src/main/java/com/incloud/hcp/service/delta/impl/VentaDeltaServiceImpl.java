@@ -9,10 +9,12 @@
  */
 package com.incloud.hcp.service.delta.impl;
 
-import com.incloud.hcp.domain.AppParametria;
-import com.incloud.hcp.domain.response.AppParametriaResponse;
-import com.incloud.hcp.service.delta.AppParametriaDeltaService;
-import com.incloud.hcp.service.impl.AppParametriaServiceImpl;
+import com.incloud.hcp.domain.Boleta;
+import com.incloud.hcp.domain.Lote;
+import com.incloud.hcp.domain.Venta;
+import com.incloud.hcp.domain.response.VentaResponse;
+import com.incloud.hcp.service.delta.VentaDeltaService;
+import com.incloud.hcp.service.impl.VentaServiceImpl;
 import com.incloud.hcp.service.support.PageRequestByExample;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -31,11 +33,11 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
- * A simple DTO Facility for AppParametria.
+ * A simple DTO Facility for Venta.
  */
 @Service
 @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-public class AppParametriaDeltaServiceImpl extends AppParametriaServiceImpl implements AppParametriaDeltaService {
+public class VentaDeltaServiceImpl extends VentaServiceImpl implements VentaDeltaService {
 
     /**************************/
     /* Metodos Personalizados */
@@ -49,25 +51,25 @@ public class AppParametriaDeltaServiceImpl extends AppParametriaServiceImpl impl
         return sort;
     }
 
-    protected Sort setFind(AppParametria req, ExampleMatcher matcher, Example<AppParametria> example, Sort sort) {
+    protected Sort setFind(Venta req, ExampleMatcher matcher, Example<Venta> example, Sort sort) {
         return sort;
     }
 
-    protected void setFindPaginated(PageRequestByExample<AppParametria> req, ExampleMatcher matcher, Example<AppParametria> example) {
+    protected void setFindPaginated(PageRequestByExample<Venta> req, ExampleMatcher matcher, Example<Venta> example) {
         return;
     }
 
-    protected List<Predicate> setAdicionalDeltaPredicate(List<Predicate> predicates, AppParametriaResponse bean, CriteriaBuilder cb,
-            CriteriaQuery<AppParametria> query, Root<AppParametria> root) throws Exception {
+    protected List<Predicate> setAdicionalDeltaPredicate(List<Predicate> predicates, VentaResponse bean, CriteriaBuilder cb, CriteriaQuery<Venta> query,
+            Root<Venta> root) throws Exception {
 
-        AppParametria entity = bean.getBean();
+        Venta entity = bean.getBean();
         //Ejemplo
         /*
         if (Optional.ofNullable(entity.get<VariableManytoOne>()).isPresent()) {
-            Join<AppParametria, <ClaseManytoOne>> from<ClaseManytoOne> = countRoot.join("<variableManytoOne>", JoinType.INNER);
+            Join<Venta, <ClaseManytoOne>> from<ClaseManytoOne> = countRoot.join("<variableManytoOne>", JoinType.INNER);
         
             if (Optional.ofNullable(entity.get<VariableManytoOne>().get<Atributo>()).isPresent()) {
-                Join<AppParametria, <ClaseManytoOne>> from<ClaseManytoOne> = countRoot.join("<variableManytoOne>", JoinType.INNER);
+                Join<Venta, <ClaseManytoOne>> from<ClaseManytoOne> = countRoot.join("<variableManytoOne>", JoinType.INNER);
                 Predicate thirdCondition = cb.equal(from<ClaseManytoOne>.get("<Atributo>"), entity.get<ClaseManytoOne>().get<Atributo>());
                 predicates.add(thirdCondition);
             }
@@ -78,13 +80,13 @@ public class AppParametriaDeltaServiceImpl extends AppParametriaServiceImpl impl
         return predicates;
     }
 
-    protected Root<AppParametria> setAdicionalDeltaTotalPredicate(AppParametriaResponse bean, Root<AppParametria> countRoot) throws Exception {
-        AppParametria entity = bean.getBean();
+    protected Root<Venta> setAdicionalDeltaTotalPredicate(VentaResponse bean, Root<Venta> countRoot) throws Exception {
+        Venta entity = bean.getBean();
         //Ejemplo
         /*
         if (Optional.ofNullable(entity.get<VariableManytoOne>()).isPresent()) {
             if (Optional.ofNullable(entity.get<VariableManytoOne>()).isPresent()) {
-                Join<AppParametria, <ClaseManytoOne>> from<ClaseManytoOne> = countRoot.join("<variableManytoOne>", JoinType.INNER);
+                Join<Venta, <ClaseManytoOne>> from<ClaseManytoOne> = countRoot.join("<variableManytoOne>", JoinType.INNER);
             }
         }
         */
@@ -95,16 +97,16 @@ public class AppParametriaDeltaServiceImpl extends AppParametriaServiceImpl impl
     /* METODOS CRUD */
     /****************/
 
-    protected String setValidacionesPrevias(AppParametria bean) throws Exception {
+    protected String setValidacionesPrevias(Venta bean) throws Exception {
         String mensaje = "";
         return mensaje;
     }
 
-    protected AppParametria setCreate(AppParametria bean) throws Exception {
+    protected Venta setCreate(Venta bean) throws Exception {
         return bean;
     }
 
-    protected void setSave(AppParametria dto) throws Exception {
+    protected void setSave(Venta dto) throws Exception {
         return;
     }
 
@@ -120,16 +122,16 @@ public class AppParametriaDeltaServiceImpl extends AppParametriaServiceImpl impl
     /* METODOS CRUD Masivos */
     /************************/
 
-    protected AppParametria setUploadExcel(Cell currentCell, AppParametria appParametria, int contador) throws Exception {
-        appParametria = super.setUploadExcel(currentCell, appParametria, contador);
-        return appParametria;
+    protected Venta setUploadExcel(Cell currentCell, Venta venta, int contador) throws Exception {
+        venta = super.setUploadExcel(currentCell, venta, contador);
+        return venta;
     }
 
-    protected String setSaveMasivo(AppParametria dto) throws Exception {
+    protected String setSaveMasivo(Venta dto) throws Exception {
         return "";
     }
 
-    protected List<AppParametria> setBeforeDeleteMasivo(List<AppParametria> listaDto) throws Exception {
+    protected List<Venta> setBeforeDeleteMasivo(List<Venta> listaDto) throws Exception {
         return listaDto;
     }
 
@@ -141,7 +143,7 @@ public class AppParametriaDeltaServiceImpl extends AppParametriaServiceImpl impl
     /* Metodos que generan Excel */
     /*****************************/
 
-    protected void setDownloadExcelItem(AppParametria bean, HSSFRow dataRow) {
+    protected void setDownloadExcelItem(Venta bean, HSSFRow dataRow) {
 
     }
 
@@ -152,5 +154,29 @@ public class AppParametriaDeltaServiceImpl extends AppParametriaServiceImpl impl
     /*****************/
     /* Otros Metodos */
     /*****************/
+
+    protected String setGraphDescripcionByLote(Lote idLote) {
+        return idLote.getId().toString();
+    }
+
+    protected String setGraphPieChartTituloByLote() {
+        return "Lote";
+    }
+
+    protected String setGraphBarChartTituloByLote() {
+        return "Lote";
+    }
+
+    protected String setGraphDescripcionByBoleta(Boleta idBoleta) {
+        return idBoleta.getId().toString();
+    }
+
+    protected String setGraphPieChartTituloByBoleta() {
+        return "Boleta";
+    }
+
+    protected String setGraphBarChartTituloByBoleta() {
+        return "Boleta";
+    }
 
 }

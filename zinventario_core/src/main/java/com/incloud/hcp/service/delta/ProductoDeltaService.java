@@ -5,12 +5,15 @@
  * Documentation: http://www.jaxio.com/documentation/celerio/
  * Modificado por CARLOS BAZALAR
  * Email: cbazalarlarosa@gmail.com
- * Template pack-angular:src/main/java/repository/EntitydeltaRepository.java.e.vm
+ * Template pack-angular:src/main/java/dto/EntitydeltaDTO.java.e.vm
  */
-package com.incloud.hcp.repository.delta;
+package com.incloud.hcp.service.delta;
 
-import com.incloud.hcp.repository.AppParametriaRepository;
+import com.incloud.hcp.service.ProductoService;
 
-public interface AppParametriaDeltaRepository extends AppParametriaRepository {
+/**
+ * Simple Interface for Producto.
+ */
+public interface ProductoDeltaService extends ProductoService {
 
 }

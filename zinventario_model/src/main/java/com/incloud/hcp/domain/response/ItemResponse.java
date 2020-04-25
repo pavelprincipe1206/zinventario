@@ -9,46 +9,42 @@
  */
 package com.incloud.hcp.domain.response;
 
-import com.incloud.hcp.domain.AppParametria;
 import com.incloud.hcp.domain.BaseResponseDomain;
+import com.incloud.hcp.domain.Boleta;
+import com.incloud.hcp.domain.Item;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Simple Interface for AppParametria.
+ * Simple Interface for Item.
  */
 @Data
 @ToString
 @EqualsAndHashCode
-public class AppParametriaResponse extends BaseResponseDomain<AppParametria> {
+public class ItemResponse extends BaseResponseDomain<Item> {
 
     /****************************/
     /* Variables de Condiciones */
     /****************************/
 
     private String idCondicion;
-    private String descriptionCondicion;
-    private String labelCondicion;
-    private String moduloCondicion;
-    private String statusCondicion;
-    private String value1Condicion;
-    private String value2Condicion;
-    private String value3Condicion;
+    private String descripcionCondicion;
+    private String cantidadCondicion;
+    private String precioUnitarioCondicion;
+    //private String idBoletaCondicion;
 
     /****************************/
     /* Variables Listas         */
     /****************************/
 
     private List<Integer> idList;
-    private List<String> descriptionList;
-    private List<String> labelList;
-    private List<String> moduloList;
-    private List<String> statusList;
-    private List<String> value1List;
-    private List<String> value2List;
-    private List<String> value3List;
+    private List<String> descripcionList;
+    private List<Integer> cantidadList;
+    private List<BigDecimal> precioUnitarioList;
+    private List<Boleta> idBoletaList;
 
 }

@@ -9,8 +9,8 @@
  */
 package com.incloud.hcp.repository.delta;
 
-import com.incloud.hcp.repository.AppParametriaRepository;
+import com.incloud.hcp.repository.VentaRepository;
 
-public interface AppParametriaDeltaRepository extends AppParametriaRepository {
+public interface VentaDeltaRepository extends VentaRepository {
 
 }
