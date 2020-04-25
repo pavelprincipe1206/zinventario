@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name = "ITEM")
+@Table(name = "item")
 //@Audited
 //@AuditTable("_audi_ITEM")
 public class Item extends BaseDomain implements Identifiable<Integer>, Serializable {
@@ -40,7 +40,7 @@ public class Item extends BaseDomain implements Identifiable<Integer>, Serializa
     private BigDecimal precioUnitario;
 
     // Many to one
-    private Boleta idBoleta;
+    private Boleta boleta;
 
     @Override
     public String entityClassName() {
@@ -50,10 +50,10 @@ public class Item extends BaseDomain implements Identifiable<Integer>, Serializa
     // -- [id] ------------------------
 
     @Override
-    @Column(name = "ID_ITEM", precision = 5)
-    @GeneratedValue(strategy = SEQUENCE, generator = "seq_ITEM")
+    @Column(name = "id_item", precision = 5)
+    @GeneratedValue(strategy = SEQUENCE, generator = "seq_item")
     @Id
-    @SequenceGenerator(name = "seq_ITEM", sequenceName = "seq_ITEM", allocationSize = 1)
+    @SequenceGenerator(name = "seq_item", sequenceName = "seq_item", allocationSize = 1)
     public Integer getId() {
         return id;
     }
@@ -76,7 +76,7 @@ public class Item extends BaseDomain implements Identifiable<Integer>, Serializa
     // -- [descripcion] ------------------------
 
     @Size(max = 255, message = "{message.item.descripcion.sizeMax} {max} {message.caracter}")
-    @Column(name = "DESCRIPCION")
+    @Column(name = "descripcion")
     public String getDescripcion() {
         return descripcion;
     }
@@ -93,7 +93,7 @@ public class Item extends BaseDomain implements Identifiable<Integer>, Serializa
 
     @Digits(integer = 5, fraction = 0)
     @NotNull
-    @Column(name = "CANTIDAD", nullable = false, precision = 5)
+    @Column(name = "cantidad", nullable = false, precision = 5)
     public Integer getCantidad() {
         return cantidad;
     }
@@ -109,7 +109,7 @@ public class Item extends BaseDomain implements Identifiable<Integer>, Serializa
     // -- [precioUnitario] ------------------------
 
     @Digits(integer = 17, fraction = 2)
-    @Column(name = "PRECIO_UNITARIO", precision = 19, scale = 2)
+    @Column(name = "precio_unitario", precision = 19, scale = 2)
     public BigDecimal getPrecioUnitario() {
         return precioUnitario;
     }
@@ -132,21 +132,21 @@ public class Item extends BaseDomain implements Identifiable<Integer>, Serializa
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     @NotNull
-    @JoinColumn(name = "ID_BOLETA", nullable = false)
+    @JoinColumn(name = "id_boleta", nullable = false)
     @ManyToOne
-    public Boleta getIdBoleta() {
-        return idBoleta;
+    public Boleta getBoleta() {
+        return boleta;
     }
 
     /**
-     * Set the {@link #idBoleta} without adding this Item instance on the passed {@link #idBoleta}
+     * Set the {@link #boleta} without adding this Item instance on the passed {@link #boleta}
      */
-    public void setIdBoleta(Boleta idBoleta) {
-        this.idBoleta = idBoleta;
+    public void setBoleta(Boleta boleta) {
+        this.boleta = boleta;
     }
 
-    public Item idBoleta(Boleta idBoleta) {
-        setIdBoleta(idBoleta);
+    public Item boleta(Boleta boleta) {
+        setBoleta(boleta);
         return this;
     }
 
@@ -183,7 +183,7 @@ public class Item extends BaseDomain implements Identifiable<Integer>, Serializa
                 .add("descripcion", getDescripcion()) //
                 .add("cantidad", getCantidad()) //
                 .add("precioUnitario", getPrecioUnitario()) //
-                .add("idBole", getIdBole()) //    
+                .add("idBole", getBoleta()) //
                 .toString();
     }
 }

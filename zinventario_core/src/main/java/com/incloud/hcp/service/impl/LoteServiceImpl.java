@@ -288,7 +288,7 @@ public abstract class LoteServiceImpl extends JPACustomServiceImpl<LoteResponse,
         sqlInsert = sqlInsert + bean.getId() + ", ";
         sqlInsert = sqlInsert + bean.getStock() + ", ";
         sqlInsert = sqlInsert + bean.getPrecio() + ", ";
-        sqlInsert = sqlInsert + bean.getIdProducto().getId();
+        sqlInsert = sqlInsert + bean.getProducto().getId();
         sqlInsert = sqlInsert + " );";
         return sqlInsert;
     }

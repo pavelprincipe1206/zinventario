@@ -2,8 +2,6 @@ package com.incloud.hcp.job;
 
 
 import com.incloud.hcp.repository.delta.AppParametriaDeltaRepository;
-import com.incloud.hcp.service.delta.CerNotaPedidoDeltaService;
-import com.incloud.hcp.service.delta.SapRfcDeltaService;
 import com.incloud.hcp.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -21,20 +19,18 @@ public class ScheduledTasks {
 
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    @Autowired
-    private CerNotaPedidoDeltaService cerNotaPedidoDeltaService;
+
 
     @Autowired
     private AppParametriaDeltaRepository appParametriaDeltaRepository;
 
-    @Autowired
-    private SapRfcDeltaService sapRfcDeltaService;
+
 
     @Scheduled(cron = "0 5 * * * ?")
     public void scheduleActualizarNPNoVigentes() {
         logger.error("Cron Task scheduleActualizarNPNoVigentes :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
         try {
-            this.cerNotaPedidoDeltaService.actualizarNoVigente();
+            //this.cerNotaPedidoDeltaService.actualizarNoVigente();
         }
         catch (Exception e) {
             logger.error("Cron Task Fin JOB scheduleActualizarNPNoVigentes ERROR: " + Utils.obtieneMensajeErrorException(e));
@@ -139,7 +135,7 @@ public class ScheduledTasks {
             //range.setHigh(format.format(dateManiana));
 
             //listaFecha.add(range);
-            this.sapRfcDeltaService.integrarMateriales(format.format(dateAyer), format.format(dateManiana));
+            //this.sapRfcDeltaService.integrarMateriales(format.format(dateAyer), format.format(dateManiana));
 
         }
         catch (Exception e) {
@@ -178,7 +174,7 @@ public class ScheduledTasks {
             //range.setHigh(format.format(dateManiana));
 
             //listaFecha.add(range);
-            this.sapRfcDeltaService.integrarServicios(format.format(dateAyer), format.format(dateManiana));
+            //this.sapRfcDeltaService.integrarServicios(format.format(dateAyer), format.format(dateManiana));
 
         }
         catch (Exception e) {

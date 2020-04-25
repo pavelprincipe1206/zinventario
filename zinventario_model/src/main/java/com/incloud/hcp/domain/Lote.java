@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name = "LOTE")
+@Table(name = "lote")
 //@Audited
 //@AuditTable("_audi_LOTE")
 public class Lote extends BaseDomain implements Identifiable<Integer>, Serializable {
@@ -38,7 +38,7 @@ public class Lote extends BaseDomain implements Identifiable<Integer>, Serializa
     private BigDecimal precio;
 
     // Many to one
-    private Producto idProducto;
+    private Producto producto;
 
     @Override
     public String entityClassName() {
@@ -48,10 +48,10 @@ public class Lote extends BaseDomain implements Identifiable<Integer>, Serializa
     // -- [id] ------------------------
 
     @Override
-    @Column(name = "ID_LOTE", precision = 5)
-    @GeneratedValue(strategy = SEQUENCE, generator = "seq_LOTE")
+    @Column(name = "id_lote", precision = 5)
+    @GeneratedValue(strategy = SEQUENCE, generator = "seq_lote")
     @Id
-    @SequenceGenerator(name = "seq_LOTE", sequenceName = "seq_LOTE", allocationSize = 1)
+    @SequenceGenerator(name = "seq_lote", sequenceName = "seq_lote", allocationSize = 1)
     public Integer getId() {
         return id;
     }
@@ -75,7 +75,7 @@ public class Lote extends BaseDomain implements Identifiable<Integer>, Serializa
 
     @Digits(integer = 5, fraction = 0)
     @NotNull
-    @Column(name = "STOCK", nullable = false, precision = 5)
+    @Column(name = "stock", nullable = false, precision = 5)
     public Integer getStock() {
         return stock;
     }
@@ -91,7 +91,7 @@ public class Lote extends BaseDomain implements Identifiable<Integer>, Serializa
     // -- [precio] ------------------------
 
     @Digits(integer = 17, fraction = 2)
-    @Column(name = "PRECIO", precision = 19, scale = 2)
+    @Column(name = "precio", precision = 19, scale = 2)
     public BigDecimal getPrecio() {
         return precio;
     }
@@ -114,21 +114,21 @@ public class Lote extends BaseDomain implements Identifiable<Integer>, Serializa
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     @NotNull
-    @JoinColumn(name = "ID_PRODUCTO", nullable = false)
+    @JoinColumn(name = "id_producto", nullable = false)
     @ManyToOne
-    public Producto getIdProducto() {
-        return idProducto;
+    public Producto getProducto() {
+        return producto;
     }
 
     /**
-     * Set the {@link #idProducto} without adding this Lote instance on the passed {@link #idProducto}
+     * Set the {@link #producto} without adding this Lote instance on the passed {@link #producto}
      */
-    public void setIdProducto(Producto idProducto) {
-        this.idProducto = idProducto;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
-    public Lote idProducto(Producto idProducto) {
-        setIdProducto(idProducto);
+    public Lote producto(Producto producto) {
+        setProducto(producto);
         return this;
     }
 
@@ -163,7 +163,7 @@ public class Lote extends BaseDomain implements Identifiable<Integer>, Serializa
         return MoreObjects.toStringHelper(this) //
                 .add("id", getId()) //
                 .add("stock", getStock()) //
-                .add("idProduc", getIdProduc()) //    
+                .add("idProduc", getProducto()) //
                 .add("precio", getPrecio()) //
                 .toString();
     }

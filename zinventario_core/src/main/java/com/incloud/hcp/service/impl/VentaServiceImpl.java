@@ -289,8 +289,8 @@ public abstract class VentaServiceImpl extends JPACustomServiceImpl<VentaRespons
         } else {
             sqlInsert = sqlInsert + "null" + ", ";
         }
-        sqlInsert = sqlInsert + bean.getIdLote().getId() + ", ";
-        sqlInsert = sqlInsert + bean.getIdBoleta().getId();
+        sqlInsert = sqlInsert + bean.getLote().getId() + ", ";
+        sqlInsert = sqlInsert + bean.getBoleta().getId();
         sqlInsert = sqlInsert + " );";
         return sqlInsert;
     }

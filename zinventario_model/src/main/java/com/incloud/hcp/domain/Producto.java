@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name = "PRODUCTO")
+@Table(name = "producto")
 //@Audited
 //@AuditTable("_audi_PRODUCTO")
 public class Producto extends BaseDomain implements Identifiable<Integer>, Serializable {
@@ -44,10 +44,10 @@ public class Producto extends BaseDomain implements Identifiable<Integer>, Seria
     // -- [id] ------------------------
 
     @Override
-    @Column(name = "ID_PRODUCTO", precision = 5)
-    @GeneratedValue(strategy = SEQUENCE, generator = "seq_PRODUCTO")
+    @Column(name = "id_producto", precision = 5)
+    @GeneratedValue(strategy = SEQUENCE, generator = "seq_producto")
     @Id
-    @SequenceGenerator(name = "seq_PRODUCTO", sequenceName = "seq_PRODUCTO", allocationSize = 1)
+    @SequenceGenerator(name = "seq_producto", sequenceName = "seq_producto", allocationSize = 1)
     public Integer getId() {
         return id;
     }
@@ -71,7 +71,7 @@ public class Producto extends BaseDomain implements Identifiable<Integer>, Seria
 
     @NotEmpty(message = "{message.producto.descripcion.requerido}")
     @Size(max = 255, message = "{message.producto.descripcion.sizeMax} {max} {message.caracter}")
-    @Column(name = "DESCRIPCION", nullable = false)
+    @Column(name = "descripcion", nullable = false)
     public String getDescripcion() {
         return descripcion;
     }
@@ -88,7 +88,7 @@ public class Producto extends BaseDomain implements Identifiable<Integer>, Seria
 
     @NotEmpty(message = "{message.producto.presentacion.requerido}")
     @Size(max = 2500, message = "{message.producto.presentacion.sizeMax} {max} {message.caracter}")
-    @Column(name = "PRESENTACION", nullable = false, length = 2500)
+    @Column(name = "presentacion", nullable = false, length = 2500)
     public String getPresentacion() {
         return presentacion;
     }

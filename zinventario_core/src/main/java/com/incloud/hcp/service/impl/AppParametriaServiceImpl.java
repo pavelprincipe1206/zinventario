@@ -60,8 +60,7 @@ public abstract class AppParametriaServiceImpl extends JPACustomServiceImpl<AppP
     @Autowired
     protected AppParametriaDeltaRepository appParametriaDeltaRepository;
 
-    @Autowired
-    protected AppParametriaDeltaRepository appParametriaDeltaRepository;
+
 
     @Autowired
     protected AppParametriaRequireNewService appParametriaRequireNewService;

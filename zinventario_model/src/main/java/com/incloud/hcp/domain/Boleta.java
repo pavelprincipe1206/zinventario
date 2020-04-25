@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name = "BOLETA")
+@Table(name = "boleta")
 //@Audited
 //@AuditTable("_audi_BOLETA")
 public class Boleta extends BaseDomain implements Identifiable<Integer>, Serializable {
@@ -44,10 +44,10 @@ public class Boleta extends BaseDomain implements Identifiable<Integer>, Seriali
     // -- [id] ------------------------
 
     @Override
-    @Column(name = "ID_BOLETA", precision = 5)
-    @GeneratedValue(strategy = SEQUENCE, generator = "seq_BOLETA")
+    @Column(name = "id_boleta", precision = 5)
+    @GeneratedValue(strategy = SEQUENCE, generator = "seq_boleta")
     @Id
-    @SequenceGenerator(name = "seq_BOLETA", sequenceName = "seq_BOLETA", allocationSize = 1)
+    @SequenceGenerator(name = "seq_boleta", sequenceName = "seq_boleta", allocationSize = 1)
     public Integer getId() {
         return id;
     }
@@ -70,7 +70,7 @@ public class Boleta extends BaseDomain implements Identifiable<Integer>, Seriali
     // -- [direccion] ------------------------
 
     @Size(max = 255, message = "{message.boleta.direccion.sizeMax} {max} {message.caracter}")
-    @Column(name = "DIRECCION")
+    @Column(name = "direccion")
     public String getDireccion() {
         return direccion;
     }
@@ -86,7 +86,7 @@ public class Boleta extends BaseDomain implements Identifiable<Integer>, Seriali
     // -- [nombrePersona] ------------------------
 
     @Size(max = 255, message = "{message.boleta.nombrePersona.sizeMax} {max} {message.caracter}")
-    @Column(name = "NOMBRE_PERSONA")
+    @Column(name = "nombre_persona")
     public String getNombrePersona() {
         return nombrePersona;
     }
@@ -102,7 +102,7 @@ public class Boleta extends BaseDomain implements Identifiable<Integer>, Seriali
     // -- [tipoPersona] ------------------------
 
     @Size(max = 2, message = "{message.boleta.tipoPersona.sizeMax} {max} {message.caracter}")
-    @Column(name = "TIPO_PERSONA", length = 2)
+    @Column(name = "tipo_persona", length = 2)
     public String getTipoPersona() {
         return tipoPersona;
     }

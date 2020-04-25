@@ -312,7 +312,7 @@ public abstract class ItemServiceImpl extends JPACustomServiceImpl<ItemResponse,
         }
         sqlInsert = sqlInsert + bean.getCantidad() + ", ";
         sqlInsert = sqlInsert + bean.getPrecioUnitario() + ", ";
-        sqlInsert = sqlInsert + bean.getIdBoleta().getId();
+        sqlInsert = sqlInsert + bean.getBoleta().getId();
         sqlInsert = sqlInsert + " );";
         return sqlInsert;
     }

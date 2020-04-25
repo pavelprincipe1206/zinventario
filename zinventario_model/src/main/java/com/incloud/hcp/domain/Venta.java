@@ -22,7 +22,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import static javax.persistence.TemporalType.TIMESTAMP;
 
 @Entity
-@Table(name = "VENTA")
+@Table(name = "venta")
 //@Audited
 //@AuditTable("_audi_VENTA")
 public class Venta extends BaseDomain implements Identifiable<Integer>, Serializable {
@@ -38,8 +38,8 @@ public class Venta extends BaseDomain implements Identifiable<Integer>, Serializ
     private Date fechaVenta;
 
     // Many to one
-    private Lote idLote;
-    private Boleta idBoleta;
+    private Lote lote;
+    private Boleta boleta;
 
     @Override
     public String entityClassName() {
@@ -49,10 +49,10 @@ public class Venta extends BaseDomain implements Identifiable<Integer>, Serializ
     // -- [id] ------------------------
 
     @Override
-    @Column(name = "ID_VENTA", precision = 5)
-    @GeneratedValue(strategy = SEQUENCE, generator = "seq_VENTA")
+    @Column(name = "id_venta", precision = 5)
+    @GeneratedValue(strategy = SEQUENCE, generator = "seq_venta")
     @Id
-    @SequenceGenerator(name = "seq_VENTA", sequenceName = "seq_VENTA", allocationSize = 1)
+    @SequenceGenerator(name = "seq_venta", sequenceName = "seq_venta", allocationSize = 1)
     public Integer getId() {
         return id;
     }
@@ -75,10 +75,10 @@ public class Venta extends BaseDomain implements Identifiable<Integer>, Serializ
     // -- [fechaVenta] ------------------------
 
     @NotNull
-    @Column(name = "FECHA_VENTA", nullable = false, length = 29)
+    @Column(name = "fecha_venta", nullable = false, length = 29)
 
     @Temporal(TIMESTAMP)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy")
     public Date getFechaVenta() {
         return fechaVenta;
     }
@@ -101,21 +101,21 @@ public class Venta extends BaseDomain implements Identifiable<Integer>, Serializ
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     @NotNull
-    @JoinColumn(name = "ID_LOTE", nullable = false)
+    @JoinColumn(name = "id_lote", nullable = false)
     @ManyToOne
-    public Lote getIdLote() {
-        return idLote;
+    public Lote getLote() {
+        return lote;
     }
 
     /**
-     * Set the {@link #idLote} without adding this Venta instance on the passed {@link #idLote}
+     * Set the {@link #lote} without adding this Venta instance on the passed {@link #lote}
      */
-    public void setIdLote(Lote idLote) {
-        this.idLote = idLote;
+    public void setLote(Lote idLote) {
+        this.lote = lote;
     }
 
-    public Venta idLote(Lote idLote) {
-        setIdLote(idLote);
+    public Venta lote(Lote lote) {
+        setLote(lote);
         return this;
     }
 
@@ -124,21 +124,21 @@ public class Venta extends BaseDomain implements Identifiable<Integer>, Serializ
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     @NotNull
-    @JoinColumn(name = "ID_BOLETA", nullable = false)
+    @JoinColumn(name = "id_boleta", nullable = false)
     @ManyToOne
-    public Boleta getIdBoleta() {
-        return idBoleta;
+    public Boleta getBoleta() {
+        return boleta;
     }
 
     /**
-     * Set the {@link #idBoleta} without adding this Venta instance on the passed {@link #idBoleta}
+     * Set the {@link #boleta} without adding this Venta instance on the passed {@link #boleta}
      */
-    public void setIdBoleta(Boleta idBoleta) {
-        this.idBoleta = idBoleta;
+    public void setBoleta(Boleta boleta) {
+        this.boleta = boleta;
     }
 
-    public Venta idBoleta(Boleta idBoleta) {
-        setIdBoleta(idBoleta);
+    public Venta boleta(Boleta boleta) {
+        setBoleta(boleta);
         return this;
     }
 
@@ -173,8 +173,8 @@ public class Venta extends BaseDomain implements Identifiable<Integer>, Serializ
         return MoreObjects.toStringHelper(this) //
                 .add("id", getId()) //
                 .add("fechaVenta", getFechaVenta()) //
-                .add("idLo", getIdLo()) //    
-                .add("idBole", getIdBole()) //    
+                .add("idLo", getLote()) //
+                .add("idBole", getBoleta()) //
                 .toString();
     }
 }
